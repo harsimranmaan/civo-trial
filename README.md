@@ -16,8 +16,19 @@ kubectl get nodes
 Follow https://github.com/civo/kubernetes-marketplace/blob/6ec81e0d2693957a5ccecfc4238ad6d088c77eca/cert-manager/install.sh
 
 ```bash
+kubectl create namespace cert-manager
+
 #helm3 
-helm install cert-manager \
+helm install \
+  cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v1.0.2 \
-  jetstack/cert-manager
+  --version v1.0.4 \
+  --set installCRDs=true
+  
+```
+
+ Verify
+ ```bash
+ kubectl get pods --namespace cert-manager
+ ```
+
