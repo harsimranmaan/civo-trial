@@ -32,3 +32,12 @@ helm install \
  kubectl get pods --namespace cert-manager
  ```
 
+## Setup prometheus and grafana
+
+```bash
+kubectl create ns monitoring
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add stable https://charts.helm.sh/stable
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack --namespace=monitoring
+```
